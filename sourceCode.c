@@ -18,25 +18,25 @@
 #include "addons/RTDBHelper.h"
 
 // Wifi Credentials 
-#define WIFI_SSID "SOTON-IoT"
-#define WIFI_PASSWORD "Lkxrl1nZLJDW"
+#define WIFI_SSID "YOUR WIFI NAME"
+#define WIFI_PASSWORD "YOUR WIFI PASSWORD"
 
 
 // Firebase project API Key
-#define API_KEY "AIzaSyA0YwHlykfG1Y--17AEk085EPD2VgepFnA"
+#define API_KEY "REPLACE WITH YOUR FIREBASE PROJECT API"
 // Authourized User Email and Password 
-#define USER_EMAIL "user@hotmail.com"
-#define USER_PASSWORD "password1"
+#define USER_EMAIL "REPLACE WITH YOU OWN ACCOUNT SET UP IN FIREBASE"
+#define USER_PASSWORD "REPLACE WITH YOUR OWN PASSWPRD"
 // Firebase Database URL
-#define DATABASE_URL "https://esp32-monitoring-system-default-rtdb.europe-west1.firebasedatabase.app/"
+#define DATABASE_URL "REPLACE WITH YOUR FIREBASE RTDB URL"
 
 // Email credentials 
-#define emailSenderAccount    "motiondetectiontest1@gmail.com"
-#define emailSenderPassword   "lvoxsulkiigxxzua"
+#define emailSenderAccount    "REPLACE WITH YOU OWN SENDERR MAIL"
+#define emailSenderPassword   ""
 #define smtpServer            "smtp.gmail.com"
 #define smtpServerPort        465
-#define emailSubject          "Unusual Activities Detected by ESP32"
-#define emailRecipient        "wentai9899@gmail.com"
+#define emailSubject          ""
+#define emailRecipient        "REPLACE WITH YOU OWN RECEIPENT EMAIL"
 
 // OLED Display
 #define SCREEN_WIDTH 128  
