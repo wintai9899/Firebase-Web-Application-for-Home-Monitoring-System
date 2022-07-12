@@ -17,3 +17,6 @@ Main Content Page:
 
 ## Hardware Components
 <img width="1045" alt="image" src="https://user-images.githubusercontent.com/62014141/178565514-6da28edb-e264-4b32-93fa-fb7f20b6f36e.png">
+
+Upload Source Code to ESP32 Microcontroller using Arduino IDE
+
