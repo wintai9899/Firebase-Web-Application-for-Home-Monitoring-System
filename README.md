@@ -6,6 +6,8 @@ The web interface was developed using HTML/CSS + JQuery. The application is divi
 1. User Authentication
 2. Main Content
 
+## Web Interface
+
 Login Page:
 ![image](https://user-images.githubusercontent.com/62014141/178563329-38d6028f-ddf3-4aec-b912-ebb5b792f9e1.png)
 
@@ -13,3 +15,5 @@ Main Content Page:
 
 <img width="569" alt="image" src="https://user-images.githubusercontent.com/62014141/178564923-22eda917-3a87-4dc9-ad77-d5815625582a.png">
 
+## Hardware Components
+<img width="1045" alt="image" src="https://user-images.githubusercontent.com/62014141/178565514-6da28edb-e264-4b32-93fa-fb7f20b6f36e.png">
