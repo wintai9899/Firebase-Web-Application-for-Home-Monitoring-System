@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ESP32 Home Monitoring App</title>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+  <!-- Bootstrap -->
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <script src="scripts/config.js"></script>
+
+  <!-- Highcharts.js-->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <!-- Jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+  <script src="https://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+  <!--Top Navigation Bar-->
+  <div class="top-navbar">
+    <h1>Home Monitoring App</h1>
+  </div>
+
+  <div id="authentication-bar" style="display: none">
+    <p>
+      <span id="authentication-status" style="color:white">Welcome Back!</span>
+      <span id="user-email" style="color:aliceblue">USEREMAIL</span>
+      <!-- <a href="/" id="logout-link">(Click here to lockout logout)</a> -->
+      <button type="button" class="btn btn-primary" id="logoutBTN">Logout</button>
+    </p>
+  </div>
+
+  <!--LOGIN FORM-->
+  <form id="login-form" style="display: none;">
+    <div class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+
+                <div class="mb-md-5 mt-md-4 pb-5">
+
+                  <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                  <p class="text-white-50 mb-5">Please enter your Email and password!</p>
+
+                  <div class="form-outline form-white mb-4">
+                    <input type="email" id="userEmail" class="form-control form-control-lg" />
+                    <label class="form-label" for="userEmail">Email</label>
+                  </div>
+
+                  <div class="form-outline form-white mb-4">
+                    <input type="password" id="userPassword" class="form-control form-control-lg" />
+                    <label class="form-label" for="userPassword">Password</label>
+                  </div>
+
+                  <button class="btn btn-outline-light btn-lg px-5" type="submit" id="loginBtn">Login</button>
+                  <p id="error-message" style="color:red;"></p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!--Main Content-->
+  <div class="content-sign-in" id="main-content">
+    <!--LAST UPDATE-->
+    <p>
+      <span class="latest-update-time">Last updated: <span id="lastUpdate"></span></span>
+    </p>
+    <div id="cards-div">
+      <div class="cards">
+        <!--Temperature Card-->
+        <div class="temp-card">
+          <p>
+            <i class="fas fa-thermometer-half" style="color: white;"></i>
+            TEMPERATURE
+          </p>
+          <p>
+            <span class="reading"><span id="temperature"></span> &deg;C</span>
+          </p>
+        </div>
+        <!--Humidity Card-->
+        <div class="humidity-card">
+          <p>
+            <i class="fas fa-tint" style="color: white;"></i>
+            HUMIDITY
+          </p>
+          <p>
+            <span class="readings"><span id="humidity"></span> &percnt;</span>
+          </p>
+        </div>
+        <!--Pressure Card-->
+        <div class="pressure-card">
+          <p>
+            <i class="fas fa-angle-double-down" style="color: white;"></i>
+            PRESSURE
+          </p>
+          <p>
+            <span class="readings"><span id="pressure"></span> hPa</span>
+          </p>
+        </div>
+        <!-- Smoke Card -->
+        <div class="smoke-card">
+          <p>
+            <i class="fas fa-smoke" style="color: #e1e437;"></i>
+            Smoke Level
+          </p>
+          <p>
+            <span class="readings"><span id="smoke">
+          </p>
+        </div>
+        <!-- Luminosity Card -->
+        <div class="light-card">
+          <p>
+            <i class="fas fa-sun" style="color: #e1e437;"></i>
+            Light Intensity
+          </p>
+          <p>
+            <span class="readings"><span id="light"></span> lux</span>
+          </p>
+        </div>
+        <!-- Motion detection Card -->
+        <div class="motion-card">
+          <p>
+            <i class="fas fa-running" style="color: #e1e437;"></i>
+            No Motion Detected
+          </p>
+          <p>
+            <span class="readings"><span id="motion">
+          </p>
+        </div>
+        <!-- Time Card -->
+        <div class="time-card">
+          <p>
+            <i class="fas fa-clock" style="color:beige"></i>
+          </p>
+          <p>
+            <span class="readings"><span id="curTime">
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="gauges-div">
+      <div class="cards">
+        <!-- Temperature Gauge -->
+        <div class="temp-gauge">
+          <canvas id="gauge-temperature"></canvas>
+        </div>
+        <!-- Humidity Gauge -->
+        <div class="humidity-gauge">
+          <canvas id="gauge-humidity"></canvas>
+        </div>
+        <!-- Humidity Gauge -->
+        <div class="pressure-gauge">
+          <canvas id="gauge-pressure"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!--CHARTS-->
+    <div id="charts-div">
+      <!--SET NUMBER OF READINGS INPUT FIELD-->
+      <div>
+        <p style="color: white;">Number of Temperature readings: <input type="number" id="Tcharts-range" /></p>
+        <p style="color: white;">Number of Humidity readings: <input type="number" id="Hcharts-range" /></p>
+        <p style="color: white;">Number of Pressure readings: <input type="number" id="Pcharts-range" /></p>
+      </div>
+      <!--Temperature Chart-->
+      <div class="cards">
+        <div class="card temperature-chart">
+          <p>
+            TEMPERATURE CHART
+          </p>
+          <div id="chart-temperature" class="chart-container"></div>
+        </div>
+      </div>
+      <!--Humidity Chart-->
+      <div class="cards">
+        <div class="card humidity-chart">
+          <p>
+            HUMIDITY Chart
+          </p>
+          <div id="chart-humidity" class="chart-container"></div>
+        </div>
+      </div>
+      <!--Pressure Chart-->
+      <div class="cards">
+        <div class="card pressure-chart">
+          <p>
+            PRESSURE CHART
+          </p>
+          <div id="chart-pressure" class="chart-container"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/gauges.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/charts.js"></script>
+
+</body>
+
+</html>

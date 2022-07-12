@@ -1,0 +1,172 @@
+html {
+    font-family: "Ubuntu", sans-serif;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  body {
+    margin: 0;
+    width: 100%;
+    background-color: #212529;
+  }
+  
+  .top-navbar {
+    overflow: hidden;
+    background-color: #212529;
+    color: white;
+    font-size: 3rem;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bolder;
+  }
+  
+  #auth-bar {
+    background-color: #212529;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  #user-details {
+    color: cadetblue;
+  }
+  
+  .content {
+    padding: 10px;
+    margin: auto;
+  }
+  
+  .temp-card {
+    background-color: #189577;
+    color: white;
+    padding: 5%;
+    font-size: 1.5rem;
+  }
+
+  #temperature {
+    font-size: 2rem;
+  }
+  
+  .humidity-card {
+    background-color: #1ca1e0;
+    color: white;
+    padding: 5%;
+    font-size: 1.5rem;
+  }
+  
+  #humidity{
+    font-size: 2rem;
+    
+  }
+
+  .pressure-card {
+    background-color: #6f65bc;
+    color: white;
+    padding: 5%;
+    font-size: 1.5rem;
+  }
+  
+  #pressure {
+    font-size: 2rem;
+  }
+
+  .smoke-card {
+    background-color: #90b6b6;
+    color: white;
+    padding: 5%;
+    font-size: 1.5rem;
+  }
+  
+  #smoke {
+    font-size: 2rem;
+  }
+  .light-card {
+    background-color: #bea500;
+    color: white;
+    padding: 5%;
+    font-size: 1.5rem;
+  }
+
+
+  .motion-card {
+    background-color: #426387;
+    color: white;
+    padding: 5%;
+    font-size: 1.5rem;
+  }
+  
+  .time-card {
+    background-color:#90b6b6;
+    color:black;
+    padding: 5%;
+    font-size: 3rem;
+  }
+
+
+  
+  .cards {
+    max-width: 850px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+  }
+  
+  #gauges-div {
+    font-family: "Ubuntu", sans-serif;
+  }
+  
+  .temp-gauge {
+    background-color: #189577;
+    text-align: center;
+  }
+  
+  .humidity-gauge {
+    background-color: #1ca1e0;
+    text-align: center;
+    padding-top: 1cm;
+    
+  }
+
+  .pressure-gauge {
+    background-color: #6f65bc;
+    padding-top: 1cm;
+
+  }
+  
+  .temperature-chart{
+    background-color:#189577;
+    font-size: 1.5rem;
+  }
+  
+  .humidity-chart {
+  
+    background-color: #1ca1e0;
+    font-size: 1.5rem;
+  }
+  
+  .pressure-chart {
+    background-color: #6f65bc;
+    font-size: 1.5rem;
+  }
+  
+  
+  
+  .readings {
+    color: white;
+  }
+  
+  .latest-update-time {
+    font-size: 1rem;
+    color: white;
+  }
+  
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+  }
